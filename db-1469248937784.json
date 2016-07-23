@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "user1"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "createdAt": 1469215169220,
+      "createdBy": "User2",
+      "content": "dsaddsad"
+    },
+    {
+      "id": "2",
+      "createdAt": 1469215169220,
+      "createdBy": "User2",
+      "content": "dsaddsad"
+    },
+    {
+      "id": "3",
+      "createdAt": 1469215169220,
+      "createdBy": "User2",
+      "content": "dsaddsad"
+    },
+    {
+      "id": "4",
+      "createdAt": 1469215169220,
+      "createdBy": "User2",
+      "content": "dsaddsad"
+    },
+    {
+      "id": "5",
+      "createdAt": 1469215169220,
+      "createdBy": "User2",
+      "content": "dsaddsad"
+    }
+  ]
+}

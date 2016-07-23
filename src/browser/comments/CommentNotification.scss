@@ -1,0 +1,50 @@
+.alertBox {
+	color:#555;
+	border-radius:10px;
+	font-family:Tahoma,Geneva,Arial,sans-serif;font-size:11px;
+	padding:10px 10px 10px 36px;
+	margin:10px;
+	position:relative;
+	width:95%;
+}
+
+.alertBox span {
+	font-weight:bold;
+	text-transform:uppercase;
+}
+
+.error {
+	background:#ffecec no-repeat 10px 50%;
+	border:1px solid #f5aca6;
+}
+
+.success {
+	background:#e9ffd9 no-repeat 10px 50%;
+	border:1px solid #a6ca8a;
+}
+
+.warning {
+	background:#fff8c4 no-repeat 10px 50%;
+	border:1px solid #f2c779;
+}
+
+.notice {
+	background:#e3f7fc no-repeat 10px 50%;
+	border:1px solid #8ed9f6;
+}
+
+.hidden { 
+ 	display:none;
+ }
+
+ .closeButton {
+     line-height: 12px;
+     width: 18px;
+     font-size: 8pt;
+     font-family: tahoma;
+     margin-top: 1px;
+     margin-right: 2px;
+     position:absolute;
+     top:0;
+     right:0;
+ }
