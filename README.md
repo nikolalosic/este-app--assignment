@@ -4,7 +4,7 @@ Json server used for testing https://github.com/typicode/json-server
 
 Sample json file:
 
-
+```javascript 
 {
   "comments": [
     {
@@ -40,7 +40,7 @@ Sample json file:
     }
   ]
 }
-
+```
 
 
 TODO:
