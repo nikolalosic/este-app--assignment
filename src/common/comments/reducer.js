@@ -15,37 +15,37 @@ export default function commentsReducer(state = new InitialState, action) {
   switch (action.type) {
 
     case actionTypes.USER_CHANGED: {
-      return state.update('newCommentDetails', map=>map.set(action.payload.fieldName, action.payload.fieldValue));
+      return state.update('newCommentDetails', map => map.set(action.payload.fieldName, action.payload.fieldValue));
     }
 
     case actionTypes.ADD_COMMENT_START: {
-      return state.update('status', map=>map.set("add", "start"));
+      return state.update('status', map => map.set("add", "start"));
     }
 
     case actionTypes.ADD_COMMENT_SUCCESS: {
-      return state.update('status', map=>map.set("add", "success"));
+      return state.update('status', map => map.set("add", "success"));
     }
 
     case actionTypes.ADD_COMMENT_ERROR: {
-      return state.update('status', map=>map.set("add", "error"));
+      return state.update('status', map => map.set("add", "error"));
     } 
 
     case actionTypes.FETCH_COMMENTS_START: {
-      return state.update('status', map=>map.set("fetch", "start"));
+      return state.update('status', map => map.set("fetch", "start"));
     }
 
-    case actionTypes.FETCH_COMMENTS_SUCCESS : {
-      if(!action.payload ) return state;
+    case actionTypes.FETCH_COMMENTS_SUCCESS: {
+      if(!action.payload) return state;
       const comments = action.payload.data.reduce((comments, json) =>
         comments.set(json.id, new Comment(json))
         , Map());
-      state = state.update('commentsMap', map=> map.clear());
-      state = state.update('commentsMap', map=> map.merge(comments));
-      return state.update('status', map=>map.set("fetch", "success"));
+      state = state.update('commentsMap', map => map.clear());
+      state = state.update('commentsMap', map => map.merge(comments));
+      return state.update('status', map => map.set("fetch", "success"));
     }
 
     case actionTypes.FETCH_COMMENTS_ERROR: {
-      return state.update('status', map=>map.set("fetch", "error"));
+      return state.update('status', map => map.set("fetch", "error"));
     }
 
     case actionTypes.DELETE_COMMENT_SUCCESS: {
@@ -53,26 +53,24 @@ export default function commentsReducer(state = new InitialState, action) {
     }
 
     case actionTypes.DELETE_COMMENT_START: {
-      return state.update('status', map=>map.set("delete", "start"));
+      return state.update('status', map => map.set("delete", "start"));
     }
 
     case actionTypes.DELETE_COMMENT_ERROR: {
-      return state.update('status', map=>map.set("delete", "error"));
+      return state.update('status', map => map.set("delete", "error"));
     }
 
     case actionTypes.EDIT_COMMENT_SUCCESS: {
-      return state.update('status', map=>map.set('edit', 'success'));
+      return state.update('status', map => map.set('edit', 'success'));
     }
 
     case actionTypes.EDIT_COMMENT_START: {
-      return state.update('status', map=>map.set("edit", "start"));
+      return state.update('status', map => map.set("edit", "start"));
     }
 
     case actionTypes.EDIT_COMMENT_ERROR: {
-      return state.update('status', map=>map.set("edit", "error"));
+      return state.update('status', map => map.set("edit", "error"));
     }
-
-
   }
 
   return state;

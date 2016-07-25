@@ -14,10 +14,10 @@ const mockStore = configureMockStore(middlewares);
 function getActionsFromStore(actions) {
     var formattedActions = [];
 
-    for(var action of actions){
+    for(var action of actions) {
       if(action.payload && action.payload.data) {
           formattedActions.push({type: action.type, payload: action.payload.data});
-      }else{
+      } else{
         formattedActions.push({type: action.type});
       }
     }
@@ -27,11 +27,11 @@ function getActionsFromStore(actions) {
 
 describe('comments actions', () => {
 
-    beforeEach(function () {
+    beforeEach(function() {
       moxios.install()
     })
 
-    afterEach(function () {
+    afterEach(function() {
       moxios.uninstall()
     })
 
@@ -53,7 +53,6 @@ describe('comments actions', () => {
       });
   })
 
-
  it('creates FETCH_COMMENTS_ERROR when fetching comments has error', () => {
     moxios.stubRequest('http://localhost:3000/comments/',
     {
@@ -68,14 +67,12 @@ describe('comments actions', () => {
       .then(() => { 
          expect(1).to.eql(2);
       })
-      .catch(()=>{
+      .catch(() => {
           let storeActions = getActionsFromStore(store.getActions());
           expect(storeActions).to.eql(expectedActions);
         }
       )
   });
-
-
 
   it('creates ADD_COMMENT_SUCCESS when adding comment has been done', () => {
     moxios.stubRequest('http://localhost:3000/comments/',
@@ -102,7 +99,6 @@ describe('comments actions', () => {
       )
   })
 
-
  it('creates ADD_COMMENT_ERROR when adding comment has error', () => {
     moxios.stubRequest('http://localhost:3000/comments/',
     {
@@ -121,14 +117,12 @@ describe('comments actions', () => {
       .then(() => { 
          expect(1).to.eql(2);
       })
-      .catch(()=>{
+      .catch(() => {
           let storeActions = getActionsFromStore(store.getActions());
           expect(storeActions).to.eql(expectedActions);
         }
       )
   })
-
-
 
   it('creates DELETE_COMMENT_SUCCESS when deleting comments has been done', () => {
     moxios.stubRequest('http://localhost:3000/comments/1',
@@ -152,7 +146,6 @@ describe('comments actions', () => {
       });
   })
 
-
  it('creates DELETE_COMMENT_ERROR when deleting comments has error', () => {
     moxios.stubRequest('http://localhost:3000/comments/1',
     {
@@ -173,21 +166,18 @@ describe('comments actions', () => {
       .then(() => { 
          expect(1).to.eql(2);
       })
-      .catch(()=>{
+      .catch(() => {
           let storeActions = getActionsFromStore(store.getActions());
           expect(storeActions).to.eql(expectedActions);
         }
       )
   })
 
-
-
  it('creates EDIT_COMMENT_SUCCESS when editing comment has been done', () => {
     moxios.stubRequest('http://localhost:3000/comments/1',
     {
       status:200,
     });
-
 
     const expectedActions = [
       { type: actionTypes.EDIT_COMMENT_START },
@@ -201,13 +191,12 @@ describe('comments actions', () => {
       dispatch: () => store.dispatch(actions.fetchComments()),
     };
 
-    return store.dispatch(actions.editComment({id:1, content:"ab"})(deps))
+    return store.dispatch(actions.editComment({id: 1, content: "ab"})(deps))
       .then(() => { 
           let storeActions = getActionsFromStore(store.getActions());
           expect(storeActions).to.eql(expectedActions);
       });
   })
-
 
  it('creates EDIT_COMMENT_ERROR when editing comments has error', () => {
     moxios.stubRequest('http://localhost:3000/comments/1',
@@ -224,18 +213,15 @@ describe('comments actions', () => {
       dispatch: () => {},
     };
 
-    return store.dispatch(actions.editComment({id:1, content:"ab"})(deps))
+    return store.dispatch(actions.editComment({id: 1, content: "ab"})(deps))
       .then(() => { 
          expect(1).to.eql(2);
       })
-      .catch(()=>{
+      .catch(() => {
           let storeActions = getActionsFromStore(store.getActions());
           expect(storeActions).to.eql(expectedActions);
         }
       )
   })
-
-
-
 
 })

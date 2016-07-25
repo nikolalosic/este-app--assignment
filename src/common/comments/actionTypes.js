@@ -12,7 +12,7 @@ export const EDIT_COMMENT_START = `EDIT_COMMENT_${promiseStartSuffix}`;
 export const EDIT_COMMENT_SUCCESS = `EDIT_COMMENT_${promiseSuccessSuffix}`;
 export const EDIT_COMMENT_ERROR = `EDIT_COMMENT_${promiseErrorSuffix}`;
 
-export const DELETE_COMMENT= 'DELETE_COMMENT';
+export const DELETE_COMMENT = 'DELETE_COMMENT';
 export const DELETE_COMMENT_START = `DELETE_COMMENT_${promiseStartSuffix}`;
 export const DELETE_COMMENT_SUCCESS = `DELETE_COMMENT_${promiseSuccessSuffix}`;
 export const DELETE_COMMENT_ERROR = `DELETE_COMMENT_${promiseErrorSuffix}`;
