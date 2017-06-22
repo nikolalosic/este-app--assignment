@@ -1,7 +1,5 @@
 const promiseSuccessSuffix = "SUCCESS";
-
 const promiseStartSuffix = "START";
-
 const promiseErrorSuffix = "ERROR";
 
 export const ADD_COMMENT = 'ADD_COMMENT';
