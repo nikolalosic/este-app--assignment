@@ -11,9 +11,9 @@ const customStyles = {
     right                 : 'auto',
     bottom                : 'auto',
     transform             : 'translate(-50%, -50%)',
-    width:'600px',
-    height:'70%',
-    minHeight:'430px'
+    width                 : '600px',
+    height                :'70%',
+    minHeight             :'430px'
   }
 };
 
@@ -26,7 +26,6 @@ export default class Comment extends Component {
 		comment: PropTypes.object.isRequired,
 		editComment: PropTypes.func.isRequired
 	};
-
 
 
 	constructor() {
@@ -45,14 +44,10 @@ export default class Comment extends Component {
 		e.preventDefault();
 		const { deleteComment, comment, fetchComments } = this.props; // get action and record from props
 		deleteComment(comment.id);
-		setTimeout(
-		      () => {fetchComments(); },
-		      1500
-		    );
 	}
 	
 
-	afterOpenModal(){
+	afterOpenModal() {
 		// references are now sync'd and can be accessed.
 		this.refs.subtitle.style.color = '#f00';
 	}
@@ -62,18 +57,13 @@ export default class Comment extends Component {
 		this.setState({modalIsOpen: false});
 	}
 
-	saveChanges(e){
+	saveChanges(e) {
 		e.preventDefault();
 		const { comment, editComment, fetchComments } = this.props;
 		editComment(comment, this.refs.editContent.value);
 		this.setState({modalIsOpen: false});
-		setTimeout(
-		      () => {fetchComments(); },
-		      1500
-		    );
-
-
 	}
+
 	openModal(e) {
 		if(e && e.target.className === "button") return;
 		this.setState({modalIsOpen: true});
@@ -83,37 +73,34 @@ export default class Comment extends Component {
 		const { comment, editComment } = this.props;
 		return (
 			<li className="comment" onClick={this.openModal}>
-				<div
-					className="textbox">
-						<span className="content">
+				<div className="textbox">
+					<span className="content">
 						{comment.content}
-						</span>
+					</span>
 
-						<span
-							className="author">
-							Posted by: {comment.createdBy}
-						</span>
+					<span className="author">
+						Posted by: {comment.createdBy}
+					</span>
 
-						<span
-					className="button"
-					onClick={this.onDeleteButtonClick}>
-					x
+					<span className="button" onClick={this.onDeleteButtonClick}>
+						x
 					</span>
 
 				</div>
+
+				<Modal
+					isOpen={this.state.modalIsOpen}
+					onAfterOpen={this.afterOpenModal}
+					onRequestClose={this.closeModal}
+					style={customStyles} >
 				
-				  <Modal
-			          isOpen={this.state.modalIsOpen}
-			          onAfterOpen={this.afterOpenModal}
-			          onRequestClose={this.closeModal}
-			          style={customStyles} >
-			          <h2>Edit comment</h2>
-			          <textarea className="editComment" ref="editContent" defaultValue={comment.content}></textarea>
-			          <div className="editButtons">
-			            <button className="modalButton modalClose" onClick={this.closeModal}>Close</button>
-			            <button className="modalButton modalSave" onClick={this.saveChanges}>Save</button>
-			          </div>
-			        </Modal>
+					<h2>Edit comment</h2>
+					<textarea className="editComment" ref="editContent" defaultValue={comment.content}></textarea>
+					<div className="editButtons">
+						<button className="modalButton modalClose" onClick={this.closeModal}>Close</button>
+						<button className="modalButton modalSave" onClick={this.saveChanges}>Save</button>
+					</div>
+				</Modal>
 			</li>
 			);
 	}

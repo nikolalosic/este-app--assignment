@@ -130,6 +130,7 @@
     "yargs": "^4.1.0"
   },
   "devDependencies": {
+    "gulp-json-srv": "^0.2.0",
     "moxios": "^0.3.0",
     "sinon": "^1.17.4",
     "sinon-spy-react": "^2.0.0"

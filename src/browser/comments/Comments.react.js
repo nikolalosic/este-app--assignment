@@ -16,7 +16,7 @@ export class Comments extends Component {
     editComment: PropTypes.func.isRequired
   };
 
-  componentDidMount(){
+  componentDidMount() {
     const {fetchComments} = this.props;
     fetchComments();
   }
@@ -41,5 +41,5 @@ export class Comments extends Component {
 
 
 export default connect(state => ({
-  comments: state.comments.commentsMap
+  comments: state.comments.commentsMap,
 }), { fetchComments, deleteComment, editComment })(Comments);

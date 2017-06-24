@@ -25,10 +25,12 @@ export function deleteComment(id) {
 
 
 export function editComment(comment, newContent) {
-
 	return axios.put(url + comment.id, 
 		{
-			content: newContent
+			content: newContent,
+      id: comment.id,
+      createdAt: comment.createdAt,
+      createdBy: comment.createdBy
 		},
 	
 		{

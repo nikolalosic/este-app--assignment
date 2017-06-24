@@ -16,7 +16,7 @@ export class CommentForm extends Component {
     newCommentDetails: PropTypes.object.isRequired
   };
 
-  constructor(){
+  constructor() {
   	super();
   	this.handleClick = this.handleClick.bind(this);
   }
@@ -46,7 +46,6 @@ export class CommentForm extends Component {
       </div>
       
       )
-
   }
 }
 

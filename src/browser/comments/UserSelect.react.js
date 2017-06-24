@@ -14,13 +14,13 @@ export class UserSelect extends Component {
     newCommentDetails: PropTypes.object.isRequired
   };
 
-  constructor(){
+  constructor() {
     super();
     this.handleUserChange = this.handleUserChange.bind(this);
 
   }
 
-  handleUserChange(e){
+  handleUserChange(e) {
     e.preventDefault();
     const {userChanged} = this.props;
     userChanged(e.target.value); // no need for reset, we wan't last user selecter
@@ -29,19 +29,18 @@ export class UserSelect extends Component {
   render() {
     return (
       <div className="userSelect">
-      <div>
-      Comment As:</div>
-       <select className="selectBox" defaultValue="NONE" onChange={this.handleUserChange.bind(this)} >
+        <div>Comment As:</div>
+        <select className="selectBox" defaultValue="NONE" onChange={this.handleUserChange.bind(this)} >
           <option value="NONE"></option>
           <option value="User1">User1</option>
           <option value="User2">User2</option>
-           <option value="User3">User3</option>
+          <option value="User3">User3</option>
         </select>
-        </div>
+      </div>
       );
   }
 
 }
 
 export default connect( state=>({newCommentDetails: state.comments.newCommentDetails}),
-{userChanged})(UserSelect); 
+  {userChanged})(UserSelect); 

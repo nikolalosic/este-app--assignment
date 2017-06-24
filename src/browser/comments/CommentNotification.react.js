@@ -23,21 +23,18 @@ export class CommentNotification extends Component {
     }
   }
   
-  hideNotification(e){
+  hideNotification(e) {
       e.preventDefault();
       this.setState({show: !this.state.show});
   }
   componentWillReceiveProps(props){
-    // TODO: change this,looks bad
     this.setState({show: true}); // to enable closing notification
 
   }
 
-
   render() {   
     let message;
-    let status = this.props.status.get('add');
-
+    let status = this.props.status.get("add");
     // TODO: there was some error with formatted message, fix it, this is just to make it work
     message = status === "error" ? 
       newCommentMessages.error.defaultMessage:
@@ -49,22 +46,20 @@ export class CommentNotification extends Component {
       alertBox: true,
       success:  status === "success",
       error: status === "error",
-      hidden: !(this.state.show && message) 
+      hidden: !(this.state.show && message)
     }); // state is involved to enable closing notification because we can't change props
     
     return (
-            <div className={className}>
-
-              <span className="notification-text">
-                {message}
-              </span>
-              <div> 
-                <input className="closeButton" type="button" value="x" onClick={this.hideNotification} /> 
-              </div>
-            </div>
-      )
-
+      <div className={className}>
+        <span className="notification-text">
+          {message}
+        </span>
+        <div> 
+          <input className="closeButton" type="button" value="x" onClick={this.hideNotification} /> 
+        </div>
+      </div>
+    )
   }
 }
 
-export default connect(state => ({status: state.comments.status}), {})(CommentNotification); 
+export default connect(state => ({status: state.comments.status}))(CommentNotification); 
